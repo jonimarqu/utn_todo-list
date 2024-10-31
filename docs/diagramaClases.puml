@@ -1,0 +1,89 @@
+@startuml ToDo
+
+class App {
+	-tareasArchivo: TareasArchivo
+	-estadisticas: Estadisticas
+	-instance: App
+
+	+getInstance(): App
+	+ejecutarComando(cmd: Command): void
+}
+
+interface Command {
+	+execute(): void
+}
+
+class AgregarTareaCommand {
+	-tarea: Tarea
+	+execute(): void
+}
+
+class EditarTareaCommand {
+	-tareaId: number
+	-nuevosDatos: Tarea
+	+execute(): void
+}
+
+class EliminarTareaCommand {
+	-tareaId: number
+	+execute(): void
+}
+
+class Tarea {
+	+id: number
+	+titulo: String
+	+descripcion: String
+	+fechaCreacion: Date
+	+fechaVencimiento: Date
+	+prioridad: Prioridad
+	+categoria: Categoria
+	+etiquetas: List<String>
+	+avance: number
+	+estado: Estado
+
+	+actualizarAvance(nuevoAvance: number): void
+	+marcarComoCompletada(): void
+}
+
+enum Prioridad {
+	ALTA
+	MEDIA
+	BAJA
+}
+
+enum Estado {
+	PENDIENTE
+	COMPLETADA
+}
+
+class Categoria {
+	+id: number
+	+nombre: String
+}
+
+class Estadisticas {
+	+calcularTareasCompletadas(): number
+	+calcularTareasPendientes(): number
+	+tiempoDedicadoPorTarea(): Map<Tarea, number>
+}
+
+class TareasArchivo {
+	+guardarTareas(tareas: List<Tarea>): void
+	+cargarTareas(): List<Tarea>
+}
+
+'uso
+App --> Estadisticas
+App --> TareasArchivo
+App --> Command
+TareasArchivo --> Tarea
+
+'herencia
+Command <|.. AgregarTareaCommand
+Command <|.. EditarTareaCommand
+Command <|.. EliminarTareaCommand
+
+'composition
+Tarea *-- Categoria
+
+@enduml
