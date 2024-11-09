@@ -1,3 +1,5 @@
+import Tarea from "./tarea.ts";
+
 export default class Estadisticas {
   constructor() {}
 
@@ -17,7 +19,19 @@ export default class Estadisticas {
     const tareasCompletadas: number =
       this.calcularTareasCompletadas(listaTareas);
 
-    return totalTareas - tareasCompletadas;
+    let tareasPendientes: number = totalTareas - tareasCompletadas;
+
+    return tareasPendientes;
+  }
+
+  public calcularTasaFinalizacion(listaTareas: Array<Tarea>) {
+    const totalTareas: number = listaTareas.length;
+    const tareasCompletadas: number =
+      this.calcularTareasCompletadas(listaTareas);
+
+    let tasaFinalizacion: number = (tareasCompletadas * 100) / totalTareas;
+
+    return tasaFinalizacion;
   }
 
   public tiempoDedicadoPorTarea(): Map<Tarea, number> {}
