@@ -1,7 +1,7 @@
-import Estadisticas from "../estadisticas";
+import Estadisticas from "../src/clases/estadisticas";
 import { mock } from "jest-mock-extended";
-import Tarea from "../tarea.ts";
-import Estado from "../estado.ts";
+import Tarea from "../src/clases/tarea.ts";
+import Estado from "../src/clases/estado.ts";
 
 describe("Test de la clase Estadistica", () => {
   let instance: Estadisticas;
