@@ -1,5 +1,7 @@
 import App from "../src/clases/app";
 import Command from "../src/clases/command";
+import OrdenadoTitulo from "../src/clases/ordenadoTitulo";
+import OrdenadoPrioridad from "../src/clases/ordenadoPrioridad";
 import { mock } from "jest-mock-extended";
 
 describe("Test de la clase App", () => {
@@ -22,5 +24,14 @@ describe("Test de la clase App", () => {
 
   test("Pruebo que el metodo ejecutarComando no haga throw error", () => {
     expect(instance.ejecutarComando(command)).not.toThrow();
+  });
+
+  test("Pruebo que el metodo getEstrategiaOrdenado y setEstrategiaOrdenado seteen y devuelvan los valores correctos", () => {
+    const estrategia1 = mock<OrdenadoTitulo>();
+    const estrategia2 = mock<OrdenadoPrioridad>();
+    instance.setEstrategiaOrdenado(estrategia1);
+    expect(instance.getEstrategiaOrdenado()).toEqual(estrategia1);
+    instance.setEstrategiaOrdenado(estrategia2);
+    expect(instance.getEstrategiaOrdenado()).toEqual(estrategia2);
   });
 });
