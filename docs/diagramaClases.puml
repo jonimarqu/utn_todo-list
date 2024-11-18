@@ -84,6 +84,7 @@ Command <|.. EditarTareaCommand
 Command <|.. EliminarTareaCommand
 
 'composition
+App *-- App
 Tarea *-- Categoria
 
 @enduml
