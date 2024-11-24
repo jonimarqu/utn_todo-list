@@ -1,5 +1,5 @@
 import App from "../src/clases/app";
-import Command from "../src/clases/command";
+import { Command } from "../src/command/Command";
 import OrdenadoTitulo from "../src/clases/ordenadoTitulo";
 import OrdenadoPrioridad from "../src/clases/ordenadoPrioridad";
 import { mock } from "jest-mock-extended";

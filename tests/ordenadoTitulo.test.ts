@@ -1,6 +1,6 @@
 import OrdenadoTitulo from "../src/clases/ordenadoTitulo";
-import Tarea from "../src/clases/tarea.ts";
-import TareasArchivo from "../src/clases/tareasArchivo.ts";
+import Tarea from "../src/clases/tarea";
+import TareaArchivo from "../src/clases/tareaArchivo";
 import { mock } from "jest-mock-extended";
 
 describe("Test de la clase OrdenadoTitulo", () => {
@@ -25,10 +25,10 @@ describe("Test de la clase OrdenadoTitulo", () => {
     let listaTareas: Array<Tarea> = [tarea3, tarea1, tarea2];
     let listaEsperada: Array<Tarea> = [tarea1, tarea2, tarea3];
 
-    const tareasArchivo = mock<TareasArchivo>();
-    tareasArchivo.cargarTareas.mockReturnValue(listaTareas);
+    const tareaArchivo = mock<TareaArchivo>();
+    tareaArchivo.cargarTarea.mockReturnValue(listaTareas);
 
-    instance.ordenar();
+    instance.ordenar(tareaArchivo);
     expect(listaTareas).toEqual(listaEsperada);
   });
 });

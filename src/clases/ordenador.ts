@@ -1,3 +1,5 @@
+import TareasArchivo from "./tareaArchivo";
+
 export default interface Ordenador {
-  ordenar(): void;
+  ordenar(tareaArchivo: TareasArchivo): void;
 }

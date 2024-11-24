@@ -1,20 +1,20 @@
 import Ordenador from "./ordenador";
 import Tarea from "./tarea";
-import TareasArchivo from "./tareasArchivo";
+import TareaArchivo from "./tareaArchivo";
 
 export default class OrdenadoTitulo implements Ordenador {
   constructor() {}
 
-  public ordenar(): void {
-    let listaTareas: Array<Tarea> = TareasArchivo.cargarTareas();
+  public ordenar(tareaArchivo: TareaArchivo): void {
+    let listaTareas: Array<Tarea> = tareaArchivo.cargarTarea();
     listaTareas.sort((tarea1, tarea2) => {
-      if (tarea1.titulo > tarea2.titulo) {
+      if (tarea1.getTitulo() > tarea2.getTitulo) {
         return 1;
-      } else if (tarea1.titulo < tarea2.titulo) {
+      } else if (tarea1.getTitulo() < tarea2.getTitulo()) {
         return -1;
       }
       return 0;
     });
-    TareasArchivo.guardarTareas(listaTareas);
+    tareaArchivo.guardarTarea(listaTareas);
   }
 }
