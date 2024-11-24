@@ -1,4 +1,5 @@
-import Tarea from "./tarea.ts";
+import Tarea from "./tarea";
+import { Estado } from "../enums/Estado.js";
 
 export default class Estadisticas {
   constructor() {}
