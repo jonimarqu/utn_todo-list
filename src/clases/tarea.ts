@@ -13,6 +13,7 @@ export default class Tarea {
         private descripcion: string,
         private fechaCreacion: Date,
         private fechaVencimiento: Date,
+        private fechaCompletado: Date,
         private prioridad: Prioridad,
         private categoria: Categoria
     ) {}
@@ -31,6 +32,9 @@ export default class Tarea {
     }
     public getFechaVencimiento():Date{
         return this.fechaVencimiento;
+    }
+    public getFechaCompletado():Date{
+        return this.fechaCompletado;
     }
     public getPrioridad():Prioridad{
         return this.prioridad;
@@ -55,6 +59,7 @@ export default class Tarea {
 
     marcarComoCompletada(): void {
         this.estado = Estado.COMPLETADA;
+        this.fechaCompletado = new Date();
     }
 	
 	public static fromJSON(json: string): Tarea {
