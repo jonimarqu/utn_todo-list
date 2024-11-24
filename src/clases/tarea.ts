@@ -1,15 +1,6 @@
 import Categoria from "./categoria";
-export enum Prioridad {
-    ALTA = 1,
-    MEDIA = 2,
-    BAJA = 3,
-}
-
-export enum Estado {
-    PENDIENTE = 'Pendiente',
-    COMPLETADA = 'Completada'
-}
-
+import { Estado } from "../enums/Estado";
+import { Prioridad } from "../enums/Prioridad";
 export default class Tarea {
     private avance: number = 0;
     private estado: Estado = Estado.PENDIENTE;
