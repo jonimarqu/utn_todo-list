@@ -1,36 +1,49 @@
-enum Prioridad {
-    ALTA = 'Alta',
-    MEDIA = 'Media',
-    BAJA = 'Baja'
-}
-
-enum Estado {
-    PENDIENTE = 'Pendiente',
-    COMPLETADA = 'Completada'
-}
-
-class Categoria {
-    constructor(
-        public id: string,
-        public nombre: string
-    ) {}
-}
-
-class Tarea {
-    public avance: number = 0;
-    public estado: Estado = Estado.PENDIENTE;
-    public etiquetas: string[] = [];
-	public activo: boolean = true;
+import Categoria from "./categoria";
+import { Estado } from "../enums/Estado";
+import { Prioridad } from "../enums/Prioridad";
+export default class Tarea {
+    private avance: number = 0;
+    private estado: Estado = Estado.PENDIENTE;
+    private etiquetas: string[] = [];
+    private activo: boolean = true;
 
     constructor(
-        public id: number,
-        public titulo: string,
-        public descripcion: string,
-        public fechaCreacion: Date,
-        public fechaVencimiento: Date,
-        public prioridad: Prioridad,
-        public categoria: Categoria
+        private id: number,
+        private titulo: string,
+        private descripcion: string,
+        private fechaCreacion: Date,
+        private fechaVencimiento: Date,
+        private prioridad: Prioridad,
+        private categoria: Categoria
     ) {}
+
+    public getId():number{
+        return this.id;
+    }
+    public getTitulo():string{
+        return this.titulo;
+    }
+    public getDescripcion():string{
+        return this.descripcion;
+    }
+    public getfechaCreacion():Date{
+        return this.fechaCreacion;
+    }
+    public getFechaVencimiento():Date{
+        return this.fechaVencimiento;
+    }
+    public getPrioridad():Prioridad{
+        return this.prioridad;
+    }
+    public getCategoria():Categoria{
+        return this.categoria;
+    }
+    public getEstado():Estado{
+        return this.estado;
+    }
+    public getEtiquetas():string[]{
+        return this.etiquetas;
+    }
 
     actualizarAvance(nuevoAvance: number): void {
         if ([0, 25, 50, 75, 100].includes(nuevoAvance)) {
