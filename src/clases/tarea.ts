@@ -5,7 +5,7 @@ export default class Tarea {
     private avance: number = 0;
     private estado: Estado = Estado.PENDIENTE;
     private etiquetas: string[] = [];
-    public activo: boolean = true;
+    private activo: boolean = true;
 
     constructor(
         private id: number,
@@ -16,6 +16,7 @@ export default class Tarea {
         private prioridad: Prioridad,
         private categoria: Categoria
     ) {}
+
     public getId():number{
         return this.id;
     }
@@ -43,6 +44,7 @@ export default class Tarea {
     public getEtiquetas():string[]{
         return this.etiquetas;
     }
+
     actualizarAvance(nuevoAvance: number): void {
         if ([0, 25, 50, 75, 100].includes(nuevoAvance)) {
             this.avance = nuevoAvance;
@@ -73,3 +75,5 @@ export default class Tarea {
 		return tarea;
 	}
 }
+
+export { Tarea, Prioridad, Estado, Categoria };
