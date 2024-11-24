@@ -1,11 +1,11 @@
-import { Command } from './Command';
-import { Tarea } from "../clases/tarea";
-import { TareasArchivo } from "../clases/tareasArchivo";
+import Command from './Command';
+import { Tarea } from '../clases/tarea';
+import { TareaArchivo } from '../clases/tareaArchivo';
 
-export class AgregarTareaCommand implements Command {
-	constructor(private tarea: Tarea, private tareasArchivo: TareasArchivo) { }
+export default class AgregarTareaCommand implements Command {
+  constructor(private tarea: Tarea, private tareaArchivo: TareaArchivo) {}
 
-	public execute(): void {
-		this.tareasArchivo.guardarTarea([this.tarea]);
-	}
+  public execute(): void {
+    this.tareaArchivo.guardarTarea([this.tarea]);
+  }
 }
