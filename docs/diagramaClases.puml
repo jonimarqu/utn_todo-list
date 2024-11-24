@@ -1,0 +1,114 @@
+@startuml ToDo
+
+class App {
+	-instance: App
+	-tareasArchivo: TareasArchivo
+	-estadisticas: Estadisticas
+	-estrategiaOrden: Ordenador
+
+	+getInstance(): App
+	+ejecutarComando(cmd: Command): void
+	+ordenar(): void
+}
+
+interface Command {
+	+execute(): void
+}
+
+class AgregarTareaCommand {
+	-tarea: Tarea
+	-tareasArchivo: TareasArchivo
+	+execute(): void
+}
+
+class EditarTareaCommand {
+	-tareaId: number
+	-nuevosDatos: Tarea
+	-tareasArchivo: TareasArchivo
+	+execute(): void
+}
+
+class EliminarTareaCommand {
+	-tareaId: number
+	-tareasArchivo: TareasArchivo
+	+execute(): void
+}
+
+class Tarea {
+	+id: number
+	+titulo: String
+	+descripcion: String
+	+fechaCreacion: Date
+	+fechaVencimiento: Date
+	+prioridad: Prioridad
+	+categoria: Categoria
+	+etiquetas: List<String>
+	+avance: number
+	+estado: Estado
+
+	+actualizarAvance(nuevoAvance: number): void
+	+marcarComoCompletada(): void
+}
+
+enum Prioridad {
+	ALTA
+	MEDIA
+	BAJA
+}
+
+enum Estado {
+	PENDIENTE
+	COMPLETADA
+}
+
+class Categoria {
+	+id: number
+	+nombre: String
+}
+
+class Estadisticas {
+	+calcularTareasCompletadas(): number
+	+calcularTareasPendientes(): number
+	+tiempoDedicadoPorTarea(): Map<Tarea, number>
+}
+
+class TareasArchivo {
+	+guardarTarea(tarea: Tarea): void
+	+cargarTareas(): List<Tarea>
+	+cargarTarea(id: number): Tarea
+	+eliminarTarea(id: number): void
+}
+
+interface Ordenador {
+	+ordenar(): void
+}
+
+class OrdenPrioridad {
+}
+
+class OrdenTitulo{
+}
+
+class OrdenVencimiento{
+}
+
+'uso
+App --> Estadisticas
+App --> TareasArchivo
+App --> Command
+TareasArchivo --> Tarea
+
+'herencia
+Command <|.. AgregarTareaCommand
+Command <|.. EditarTareaCommand
+Command <|.. EliminarTareaCommand
+
+Ordenador <|.. OrdenPrioridad
+Ordenador <|.. OrdenTitulo
+Ordenador <|.. OrdenVencimiento
+
+'composition
+App *-- App
+Tarea *-- Categoria
+
+@enduml
