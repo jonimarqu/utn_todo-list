@@ -1,3 +1,4 @@
+import Tarea from "./tarea";
 export default interface Ordenador {
-  ordenar(): void;
+  ordenar(listaTareas: Array<Tarea>): Array<Tarea>;
 }

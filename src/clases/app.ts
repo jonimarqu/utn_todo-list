@@ -1,17 +1,18 @@
 import Estadisticas from "./estadisticas";
-import TareasArchivo from "./tareasArchivo";
-import Command from "./command";
+import TareaArchivo from "./tareaArchivo";
+import { Command } from "../command/Command";
 import Ordenador from "./ordenador";
 import OrdenadoTitulo from "./ordenadoTitulo";
+import Tarea from "./tarea";
 
 export default class App {
   private static instance: App;
-  private tareasArchivo: TareasArchivo;
+  private tareaArchivo: TareaArchivo;
   private estadisticas: Estadisticas;
   private estrategiaOrdenado: Ordenador;
 
   private constructor() {
-    this.tareasArchivo = new TareasArchivo();
+    this.tareaArchivo = new TareaArchivo();
     this.estadisticas = new Estadisticas();
     this.estrategiaOrdenado = new OrdenadoTitulo();
   }
@@ -37,7 +38,7 @@ export default class App {
     this.estrategiaOrdenado = estrategiaOrdenado;
   }
 
-  public ordenar(): void {
-    this.estrategiaOrdenado.ordenar();
+  public ordenar(listaTareas: Array<Tarea>): Array<Tarea> {
+    return this.estrategiaOrdenado.ordenar(listaTareas);
   }
 }
