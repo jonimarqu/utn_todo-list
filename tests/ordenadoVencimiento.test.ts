@@ -1,16 +1,16 @@
-import OrdenadoVencimiento from "../src/clases/ordenadoVencimiento";
+import OrdenVencimiento from "../src/clases/ordenVencimiento";
 import Tarea from "../src/clases/tarea";
 import { mock } from "jest-mock-extended";
 
-describe("Test de la clase OrdenadoVencimiento", () => {
-  let instance: OrdenadoVencimiento;
+describe("Test de la clase OrdenVencimiento", () => {
+  let instance: OrdenVencimiento;
 
   beforeEach(() => {
-    instance = new OrdenadoVencimiento();
+    instance = new OrdenVencimiento();
   });
 
-  test("Pruebo que obtuve una instancia de OrdenadoVencimiento", () => {
-    expect(instance).toBeInstanceOf(OrdenadoVencimiento);
+  test("Pruebo que obtuve una instancia de OrdenVencimiento", () => {
+    expect(instance).toBeInstanceOf(OrdenVencimiento);
   });
 
   test("Pruebo que el metodo ordenar ordene correctamente una lista de tareas por fecha de vencimiento", () => {

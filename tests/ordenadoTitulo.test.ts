@@ -1,16 +1,16 @@
-import OrdenadoTitulo from "../src/clases/ordenadoTitulo";
+import OrdenTitulo from "../src/clases/ordenTitulo";
 import Tarea from "../src/clases/tarea";
 import { mock } from "jest-mock-extended";
 
-describe("Test de la clase OrdenadoTitulo", () => {
-  let instance: OrdenadoTitulo;
+describe("Test de la clase OrdenTitulo", () => {
+  let instance: OrdenTitulo;
 
   beforeEach(() => {
-    instance = new OrdenadoTitulo();
+    instance = new OrdenTitulo();
   });
 
-  test("Pruebo que obtuve una instancia de OrdenadoTitulo", () => {
-    expect(instance).toBeInstanceOf(OrdenadoTitulo);
+  test("Pruebo que obtuve una instancia de OrdenTitulo", () => {
+    expect(instance).toBeInstanceOf(OrdenTitulo);
   });
 
   test("Pruebo que el metodo ordenar ordene correctamente una lista de tareas por titulo", () => {
