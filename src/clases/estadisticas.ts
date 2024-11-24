@@ -35,5 +35,26 @@ export default class Estadisticas {
     return tasaFinalizacion;
   }
 
-  public tiempoDedicadoPorTarea(): Map<Tarea, number> {}
+  public tiempoDedicadoPorTarea(
+    listaTareas: Array<Tarea>
+  ): Map<number, number> {
+    let mapDiasDedicado = new Map();
+    for (let tarea of listaTareas) {
+      if (tarea.getFechaCompletado()) {
+        let tCreacion: number = tarea.getfechaCreacion().getTime();
+        let tCompletado: number | undefined = tarea
+          .getFechaCompletado()
+          ?.getTime();
+        if (tCompletado) {
+          let tDedicado: number = tCreacion - tCompletado;
+          let diasDedicado: number = Math.floor(
+            tDedicado / (1000 * 60 * 60 * 24)
+          );
+          let idTarea: number = tarea.getId();
+          mapDiasDedicado.set(idTarea, diasDedicado);
+        }
+      }
+    }
+    return mapDiasDedicado;
+  }
 }
