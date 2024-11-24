@@ -1,6 +1,5 @@
 import OrdenadoPrioridad from "../src/clases/ordenadoPrioridad";
 import Tarea from "../src/clases/tarea";
-import TareaArchivo from "../src/clases/tareaArchivo";
 import { mock } from "jest-mock-extended";
 
 describe("Test de la clase OrdenadoPrioridad", () => {
@@ -25,10 +24,6 @@ describe("Test de la clase OrdenadoPrioridad", () => {
     let listaTareas: Array<Tarea> = [tarea3, tarea1, tarea2];
     let listaEsperada: Array<Tarea> = [tarea1, tarea2, tarea3];
 
-    const tareaArchivo = mock<TareaArchivo>();
-    tareaArchivo.cargarTarea.mockReturnValue(listaTareas);
-
-    instance.ordenar(tareaArchivo);
-    expect(listaTareas).toEqual(listaEsperada);
+    expect(instance.ordenar(listaTareas)).toEqual(listaEsperada);
   });
 });

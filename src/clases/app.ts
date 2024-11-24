@@ -1,8 +1,9 @@
 import Estadisticas from "./estadisticas";
 import TareaArchivo from "./tareaArchivo";
-import Command from "./command";
+import { Command } from "../command/Command";
 import Ordenador from "./ordenador";
 import OrdenadoTitulo from "./ordenadoTitulo";
+import Tarea from "./tarea";
 
 export default class App {
   private static instance: App;
@@ -37,7 +38,7 @@ export default class App {
     this.estrategiaOrdenado = estrategiaOrdenado;
   }
 
-  public ordenar(): void {
-    this.estrategiaOrdenado.ordenar(this.tareaArchivo);
+  public ordenar(listaTareas: Array<Tarea>): Array<Tarea> {
+    return this.estrategiaOrdenado.ordenar(listaTareas);
   }
 }

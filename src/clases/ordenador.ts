@@ -1,5 +1,4 @@
-import TareasArchivo from "./tareaArchivo";
-
+import Tarea from "./tarea";
 export default interface Ordenador {
-  ordenar(tareaArchivo: TareasArchivo): void;
+  ordenar(listaTareas: Array<Tarea>): Array<Tarea>;
 }

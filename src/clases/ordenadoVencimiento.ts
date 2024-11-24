@@ -1,12 +1,10 @@
 import Ordenador from "./ordenador";
 import Tarea from "./tarea";
-import TareaArchivo from "./tareaArchivo";
 
 export default class OrdenadoVencimiento implements Ordenador {
   constructor() {}
 
-  public ordenar(tareaArchivo: TareaArchivo): void {
-    let listaTareas: Array<Tarea> = tareaArchivo.cargarTarea();
+  public ordenar(listaTareas: Array<Tarea>): Array<Tarea> {
     listaTareas.sort((tarea1, tarea2) => {
       if (
         tarea1.getFechaVencimiento().getTime() >
@@ -21,6 +19,6 @@ export default class OrdenadoVencimiento implements Ordenador {
       }
       return 0;
     });
-    tareaArchivo.guardarTarea(listaTareas);
+    return listaTareas;
   }
 }
