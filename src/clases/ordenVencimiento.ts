@@ -1,7 +1,7 @@
 import Ordenador from "./ordenador";
 import Tarea from "./tarea";
 
-export default class OrdenadoVencimiento implements Ordenador {
+export default class OrdenVencimiento implements Ordenador {
   constructor() {}
 
   public ordenar(listaTareas: Array<Tarea>): Array<Tarea> {
