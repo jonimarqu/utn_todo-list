@@ -1,10 +1,11 @@
-import { Command } from "./Command";
-import { Tarea } from "../clases/tarea";
-import { TareasArchivo } from "../clases/tareasArchivo";
-export class EliminarTareaCommand implements Command{
-	constructor(private tareaId: number, private tareasArchivo: TareasArchivo) { }
+import Command from './Command';
+import { Tarea } from '../clases/tarea';
+import { TareaArchivo } from '../clases/tareaArchivo';
 
-	public execute(): void {
-		this.tareasArchivo.eliminarTarea(this.tareaId);
-	}
+export default class EliminarTareaCommand implements Command {
+  constructor(private tarea: Tarea, private tareaArchivo: TareaArchivo) {}
+
+  public execute(): void {
+    this.tareaArchivo.eliminarTarea(this.tarea.getId());
+  }
 }
