@@ -35,16 +35,16 @@ class EliminarTareaCommand {
 }
 
 class Tarea {
-	+id: number
-	+titulo: String
-	+descripcion: String
-	+fechaCreacion: Date
-	+fechaVencimiento: Date
-	+prioridad: Prioridad
-	+categoria: Categoria
-	+etiquetas: List<String>
-	+avance: number
-	+estado: Estado
+	-id: number
+	-titulo: String
+	-descripcion: String
+	-fechaCreacion: Date
+	-fechaVencimiento: Date
+	-prioridad: Prioridad
+	-categoria: Categoria;
+	-etiquetas: List<String>
+	-avance: number
+	-estado: Estado
 
 	+actualizarAvance(nuevoAvance: number): void
 	+marcarComoCompletada(): void
@@ -52,25 +52,34 @@ class Tarea {
 
 enum Prioridad {
 	ALTA
-	MEDIA
-	BAJA
-}
+		MEDIA
+		BAJA
+	}
 
-enum Estado {
-	PENDIENTE
-	COMPLETADA
-}
+	enum Estado {
+		PENDIENTE
+		COMPLETADA
+	}
+	class Categoria{
+		-id:number;
+		-nombre:string;
+	}
+	class Estadisticas {
+		+calcularTareasCompletadas(): number
+		+calcularTareasPendientes(): number
+		+tiempoDedicadoPorTarea(): Map<Tarea, number>
+	}
 
-class Categoria {
-	+id: number
-	+nombre: String
-}
+	class TareasArchivo {
+		+guardarTareas(tareas: List<Tarea>): void
+		+cargarTareas(): List<Tarea>
+	}
 
-class Estadisticas {
-	+calcularTareasCompletadas(): number
-	+calcularTareasPendientes(): number
-	+tiempoDedicadoPorTarea(): Map<Tarea, number>
-}
+	'uso
+	App --> Estadisticas
+	App --> TareasArchivo
+	App --> Command
+	TareasArchivo --> Tarea
 
 class TareasArchivo {
 	+guardarTarea(tarea: Tarea): void
@@ -92,11 +101,9 @@ class OrdenTitulo{
 class OrdenVencimiento{
 }
 
-'uso
-App --> Estadisticas
-App --> TareasArchivo
-App --> Command
-TareasArchivo --> Tarea
+	'composition
+	App *-- App
+	Tarea *-- Categoria
 
 'herencia
 Command <|.. AgregarTareaCommand
