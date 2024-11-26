@@ -1,6 +1,5 @@
 import Estadisticas from "./estadisticas";
 import TareaArchivo from "./tareaArchivo";
-import Command from "../command/Command";
 import Ordenador from "./ordenador";
 import OrdenTitulo from "./ordenTitulo";
 import Tarea from "./tarea";
@@ -27,12 +26,6 @@ export default class App {
       App.instance = new App();
     }
     return App.instance;
-  }
-
-  public ejecutarComando(cmd: Command): void {
-    try {
-      cmd.execute();
-    } catch (error) {}
   }
 
   public getEstrategiaOrden(): Ordenador {

@@ -7,31 +7,7 @@ class App {
 	-estrategiaOrden: Ordenador
 
 	+getInstance(): App
-	+ejecutarComando(cmd: Command): void
 	+ordenar(): void
-}
-
-interface Command {
-	+execute(): void
-}
-
-class AgregarTareaCommand {
-	-tarea: Tarea
-	-tareasArchivo: TareasArchivo
-	+execute(): void
-}
-
-class EditarTareaCommand {
-	-tareaId: number
-	-nuevosDatos: Tarea
-	-tareasArchivo: TareasArchivo
-	+execute(): void
-}
-
-class EliminarTareaCommand {
-	-tareaId: number
-	-tareasArchivo: TareasArchivo
-	+execute(): void
 }
 
 class Tarea {
@@ -80,7 +56,6 @@ enum Prioridad {
 	'uso
 	App --> Estadisticas
 	App --> TareasArchivo
-	App --> Command
 	TareasArchivo --> Tarea
 
 class TareasArchivo {
@@ -109,10 +84,6 @@ class OrdenVencimiento{
 	App *-- Ordenador
 
 'herencia
-Command <|.. AgregarTareaCommand
-Command <|.. EditarTareaCommand
-Command <|.. EliminarTareaCommand
-
 Ordenador <|.. OrdenPrioridad
 Ordenador <|.. OrdenTitulo
 Ordenador <|.. OrdenVencimiento
