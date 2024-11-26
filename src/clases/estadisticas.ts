@@ -25,7 +25,7 @@ export default class Estadisticas {
     return tareasPendientes;
   }
 
-  public calcularTasaFinalizacion(listaTareas: Array<Tarea>) {
+  public calcularTasaFinalizacion(listaTareas: Array<Tarea>): number {
     const totalTareas: number = listaTareas.length;
     const tareasCompletadas: number =
       this.calcularTareasCompletadas(listaTareas);
