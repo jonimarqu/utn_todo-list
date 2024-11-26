@@ -40,6 +40,7 @@ class Tarea {
 	-descripcion: String
 	-fechaCreacion: Date
 	-fechaVencimiento: Date
+	-fechaCreacion: Date
 	-prioridad: Prioridad
 	-categoria: Categoria;
 	-etiquetas: List<String>
@@ -51,7 +52,7 @@ class Tarea {
 }
 
 enum Prioridad {
-	ALTA
+		ALTA
 		MEDIA
 		BAJA
 	}
@@ -65,9 +66,10 @@ enum Prioridad {
 		-nombre:string;
 	}
 	class Estadisticas {
-		+calcularTareasCompletadas(): number
-		+calcularTareasPendientes(): number
-		+tiempoDedicadoPorTarea(): Map<Tarea, number>
+		+calcularTareasCompletadas(listaTareas): number
+		+calcularTareasPendientes(listaTareas): number
+		+calcularTasaFinalizacion(listaTareas): number
+		+tiempoDedicadoPorTarea(listaTareas): Map<id, diasDedicado>
 	}
 
 	class TareasArchivo {
@@ -104,6 +106,7 @@ class OrdenVencimiento{
 	'composition
 	App *-- App
 	Tarea *-- Categoria
+	App *-- Ordenador
 
 'herencia
 Command <|.. AgregarTareaCommand
@@ -114,8 +117,5 @@ Ordenador <|.. OrdenPrioridad
 Ordenador <|.. OrdenTitulo
 Ordenador <|.. OrdenVencimiento
 
-'composition
-App *-- App
-Tarea *-- Categoria
 
 @enduml

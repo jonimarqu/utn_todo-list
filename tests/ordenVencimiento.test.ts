@@ -17,9 +17,9 @@ describe("Test de la clase OrdenVencimiento", () => {
     const tarea1 = mock<Tarea>();
     const tarea2 = mock<Tarea>();
     const tarea3 = mock<Tarea>();
-    tarea1.getFechaVencimiento["getTime"]().mockReturnValue(1);
-    tarea2.getFechaVencimiento["getTime"]().mockReturnValue(2);
-    tarea3.getFechaVencimiento["getTime"]().mockReturnValue(3);
+    tarea1.getFechaVencimiento.mockReturnValue(new Date(1, 1, 2000));
+    tarea2.getFechaVencimiento.mockReturnValue(new Date(2, 1, 2000));
+    tarea3.getFechaVencimiento.mockReturnValue(new Date(3, 1, 2000));
 
     let listaTareas: Array<Tarea> = [tarea3, tarea1, tarea2];
     let listaEsperada: Array<Tarea> = [tarea1, tarea2, tarea3];
