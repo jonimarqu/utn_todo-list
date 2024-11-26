@@ -1,5 +1,4 @@
 import App from "../src/clases/app";
-import Command from "../src/command/Command";
 import OrdenTitulo from "../src/clases/ordenTitulo";
 import OrdenPrioridad from "../src/clases/ordenPrioridad";
 import { mock } from "jest-mock-extended";
@@ -7,7 +6,6 @@ import Tarea from "../src/clases/tarea";
 
 describe("Test de la clase App", () => {
   let instance: App;
-  const command = mock<Command>();
 
   beforeEach(() => {
     instance = App.getInstance();
