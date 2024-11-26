@@ -46,7 +46,7 @@ export default class Estadisticas {
           .getFechaCompletado()
           ?.getTime();
         if (tCompletado) {
-          let tDedicado: number = tCreacion - tCompletado;
+          let tDedicado: number = tCompletado - tCreacion;
           let diasDedicado: number = Math.floor(
             tDedicado / (1000 * 60 * 60 * 24)
           );

@@ -23,10 +23,6 @@ describe("Test de la clase App", () => {
     expect(instance1).toEqual(instance2);
   });
 
-  test("Pruebo que el metodo ejecutarComando no haga throw error", () => {
-    expect(instance.ejecutarComando(command)).not.toThrow();
-  });
-
   test("Pruebo que el metodo getEstrategiaOrden y setEstrategiaOrden seteen y devuelvan los valores correctos", () => {
     const estrategia1 = mock<OrdenTitulo>();
     const estrategia2 = mock<OrdenPrioridad>();

@@ -64,17 +64,14 @@ describe("Test de la clase Estadistica", () => {
 
   test("Pruebo que tiempoDedicadoPorTarea devuelva un map con valores correctos", () => {
     const tarea1 = mock<Tarea>();
-    tarea1.getEstado.mockReturnValue(Estado.COMPLETADA);
     tarea1.getfechaCreacion.mockReturnValue(new Date(2024, 9, 8));
     tarea1.getFechaCompletado.mockReturnValue(new Date(2024, 9, 10));
     tarea1.getId.mockReturnValue(1);
     const tarea2 = mock<Tarea>();
-    tarea2.getEstado.mockReturnValue(Estado.PENDIENTE);
     tarea2.getfechaCreacion.mockReturnValue(new Date(2024, 9, 4));
-    tarea2.getFechaCompletado.mockReturnValue(new Date(2024, 9, 12));
+    tarea2.getFechaCompletado.mockReturnValue(undefined);
     tarea2.getId.mockReturnValue(2);
     const tarea3 = mock<Tarea>();
-    tarea3.getEstado.mockReturnValue(Estado.COMPLETADA);
     tarea3.getfechaCreacion.mockReturnValue(new Date(2024, 10, 5));
     tarea3.getFechaCompletado.mockReturnValue(new Date(2024, 10, 25));
     tarea3.getId.mockReturnValue(3);
