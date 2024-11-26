@@ -78,7 +78,8 @@ describe("Testeo la clase Tarea", () => {
   });
 
   test("Pruebo que el metodo setActivo cambie el valor correctamente", () => {
-    expect(tarea.setActivo(false)).toBeFalsy();
+    tarea.setActivo(false);
+    expect(tarea.getActivo()).toBeFalsy();
   });
 
   it("Deberia actualizar avance con valores validos", () => {
