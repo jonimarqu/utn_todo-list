@@ -6,6 +6,7 @@ export default class Tarea {
     private estado: Estado = Estado.PENDIENTE;
     private etiquetas: string[] = [];
     private activo: boolean = true;
+    private fechaCompletado: Date | undefined;
 
     constructor(
         private id: number,
@@ -13,7 +14,6 @@ export default class Tarea {
         private descripcion: string,
         private fechaCreacion: Date,
         private fechaVencimiento: Date,
-        private fechaCompletado: Date,
         private prioridad: Prioridad,
         private categoria: Categoria
     ) {}
@@ -33,7 +33,7 @@ export default class Tarea {
     public getFechaVencimiento(): Date {
         return this.fechaVencimiento;
     }
-    public getFechaCompletado(): Date {
+    public getFechaCompletado(): Date | undefined {
         return this.fechaCompletado;
     }
     public getPrioridad(): Prioridad {

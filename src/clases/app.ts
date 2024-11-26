@@ -1,6 +1,6 @@
 import Estadisticas from "./estadisticas";
 import TareaArchivo from "./tareaArchivo";
-import { Command } from "../command/Command";
+import Command from "../command/Command";
 import Ordenador from "./ordenador";
 import OrdenTitulo from "./ordenTitulo";
 import Tarea from "./tarea";
@@ -12,7 +12,7 @@ export default class App {
   private estrategiaOrden: Ordenador;
 
   private constructor() {
-    this.tareaArchivo = new TareaArchivo();
+    this.tareaArchivo = new TareaArchivo("../../BD/");
     this.estadisticas = new Estadisticas();
     this.estrategiaOrden = new OrdenTitulo();
   }
