@@ -1,21 +1,27 @@
 import Estadisticas from "./estadisticas";
-import TareasArchivo from "./tareasArchivo";
-import Command from "./command";
+import TareaArchivo from "./tareaArchivo";
+import Command from "../command/Command";
 import Ordenador from "./ordenador";
-import OrdenadoTitulo from "./ordenadoTitulo";
+import OrdenTitulo from "./ordenTitulo";
+import Tarea from "./tarea";
 
 export default class App {
   private static instance: App;
-  private tareasArchivo: TareasArchivo;
+  private tareaArchivo: TareaArchivo;
   private estadisticas: Estadisticas;
-  private estrategiaOrdenado: Ordenador;
+  private estrategiaOrden: Ordenador;
 
   private constructor() {
-    this.tareasArchivo = new TareasArchivo();
+    this.tareaArchivo = new TareaArchivo("../../BD/");
     this.estadisticas = new Estadisticas();
-    this.estrategiaOrdenado = new OrdenadoTitulo();
+    this.estrategiaOrden = new OrdenTitulo();
   }
 
+  /**
+   * patron singleton, permite asegurarnos de que una clase tenga una única instancia.
+   *
+   * @returns la primer instancia de App.
+   */
   static getInstance(): App {
     if (!App.instance) {
       App.instance = new App();
@@ -29,15 +35,21 @@ export default class App {
     } catch (error) {}
   }
 
-  public getEstrategiaOrdenado(): Ordenador {
-    return this.estrategiaOrdenado;
+  public getEstrategiaOrden(): Ordenador {
+    return this.estrategiaOrden;
   }
 
-  public setEstrategiaOrdenado(estrategiaOrdenado: Ordenador): void {
-    this.estrategiaOrdenado = estrategiaOrdenado;
+  public setEstrategiaOrden(estrategiaOrden: Ordenador): void {
+    this.estrategiaOrden = estrategiaOrden;
   }
 
-  public ordenar(): void {
-    this.estrategiaOrdenado.ordenar();
+  /**
+   * Ordena una lista de Tarea dependiendo de la estrategia de orden que tiene App.
+   *
+   * @param listaTareas la lista a ordenar.
+   * @returns una lista de Tarea ordenada.
+   */
+  public ordenar(listaTareas: Array<Tarea>): Array<Tarea> {
+    return this.estrategiaOrden.ordenar(listaTareas);
   }
 }

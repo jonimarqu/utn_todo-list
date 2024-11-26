@@ -75,7 +75,13 @@ export default class Tarea {
 
     public getEtiquetas(): string[] {
         return this.etiquetas;
-    }
+		}
+	public getActivo(): boolean {
+		return this.activo;
+	}
+	public setActivo(activo: boolean): void {
+		this.activo = activo;
+	}
 
     /**
      * Verifica si la tarea está activa.
