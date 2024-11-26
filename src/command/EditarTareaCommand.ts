@@ -1,15 +1,17 @@
-import { Command } from "./Command";
-import { Tarea } from "../clases/tarea";
-import { TareasArchivo } from "../clases/tareasArchivo";
+import Command from './Command';
+import { Tarea } from '../clases/tarea';
+import { TareaArchivo } from '../clases/tareaArchivo';
 
-export class EditarTareaCommand implements Command {
-	constructor(private tareaId: number, private datos: Tarea, private tareasArchivo: TareasArchivo) { }
+export default class EditarTareaCommand implements Command {
+  constructor(private tareaArchivo: TareaArchivo, private tareaEditada: Tarea) {}
 
-	public execute(): void {
-		const tarea = this.tareasArchivo.cargarTareaPorId(this.tareaId);
-		if (tarea) {
-			Object.assign(tarea, this.datos);
-			this.tareasArchivo.guardarTarea(tarea);
-		}
-	}
+  public execute(): void {
+    const tarea: Tarea | undefined = this.tareaArchivo.cargarTareaPorId(
+      this.tareaEditada.getId()
+    );
+    if (tarea) {
+      Object.assign(tarea, this.tareaEditada);
+      this.tareaArchivo.guardarTarea(tarea);
+    }
+  }
 }

@@ -21,33 +21,39 @@ export default class Tarea {
     public getId():number{
         return this.id;
     }
-    public getTitulo():string{
+    public getTitulo(): string {
         return this.titulo;
     }
-    public getDescripcion():string{
+    public getDescripcion(): string {
         return this.descripcion;
     }
-    public getfechaCreacion():Date{
+    public getfechaCreacion(): Date {
         return this.fechaCreacion;
     }
-    public getFechaVencimiento():Date{
+    public getFechaVencimiento(): Date {
         return this.fechaVencimiento;
     }
-    public getFechaCompletado():Date{
+    public getFechaCompletado(): Date {
         return this.fechaCompletado;
     }
-    public getPrioridad():Prioridad{
+    public getPrioridad(): Prioridad {
         return this.prioridad;
     }
-    public getCategoria():Categoria{
+    public getCategoria(): Categoria {
         return this.categoria;
     }
-    public getEstado():Estado{
+    public getEstado(): Estado {
         return this.estado;
     }
-    public getEtiquetas():string[]{
+    public getEtiquetas(): string[] {
         return this.etiquetas;
-    }
+		}
+	public getActivo(): boolean {
+		return this.activo;
+	}
+	public setActivo(activo: boolean): void {
+		this.activo = activo;
+	}
 
     actualizarAvance(nuevoAvance: number): void {
         if ([0, 25, 50, 75, 100].includes(nuevoAvance)) {
@@ -61,24 +67,24 @@ export default class Tarea {
         this.estado = Estado.COMPLETADA;
         this.fechaCompletado = new Date();
     }
-	
-	public static fromJSON(json: string): Tarea {
-		const data = JSON.parse(json);
-		const tarea: Tarea = new Tarea(
-			data.id,
-			data.titulo,
-			data.descripcion,
-			new Date(data.fechaCreacion),
-			new Date(data.fechaVencimiento),
-			data.prioridad,
-			new Categoria(data.categoria.id, data.categoria.nombre)
-		);
-		tarea.avance = data.avance;
-		tarea.estado = data.estado;
-		tarea.etiquetas = data.etiquetas;
-		tarea.activo = data.activo;
-		return tarea;
-	}
+
+    public static fromJSON(json: string): Tarea {
+        const data = JSON.parse(json);
+        const tarea: Tarea = new Tarea(
+            data.id,
+            data.titulo,
+            data.descripcion,
+            new Date(data.fechaCreacion),
+            new Date(data.fechaVencimiento),
+            data.prioridad,
+            new Categoria(data.categoria.id, data.categoria.nombre)
+        );
+        tarea.avance = data.avance;
+        tarea.estado = data.estado;
+        tarea.etiquetas = data.etiquetas;
+        tarea.activo = data.activo;
+        return tarea;
+    }
 }
 
 export { Tarea, Prioridad, Estado, Categoria };
