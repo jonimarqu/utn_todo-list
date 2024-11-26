@@ -17,6 +17,11 @@ export default class App {
     this.estrategiaOrden = new OrdenTitulo();
   }
 
+  /**
+   * patron singleton, permite asegurarnos de que una clase tenga una única instancia.
+   *
+   * @returns la primer instancia de App.
+   */
   static getInstance(): App {
     if (!App.instance) {
       App.instance = new App();
@@ -38,6 +43,12 @@ export default class App {
     this.estrategiaOrden = estrategiaOrden;
   }
 
+  /**
+   * Ordena una lista de Tarea dependiendo de la estrategia de orden que tiene App.
+   *
+   * @param listaTareas la lista a ordenar.
+   * @returns una lista de Tarea ordenada.
+   */
   public ordenar(listaTareas: Array<Tarea>): Array<Tarea> {
     return this.estrategiaOrden.ordenar(listaTareas);
   }
