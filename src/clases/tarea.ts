@@ -6,6 +6,7 @@ export default class Tarea {
     private estado: Estado = Estado.PENDIENTE;
     private etiquetas: string[] = [];
     private activo: boolean = true;
+    private fechaCompletado: Date | undefined;
 
     constructor(
         private id: number,
@@ -31,6 +32,9 @@ export default class Tarea {
     }
     public getFechaVencimiento(): Date {
         return this.fechaVencimiento;
+    }
+    public getFechaCompletado(): Date | undefined {
+        return this.fechaCompletado;
     }
     public getPrioridad(): Prioridad {
         return this.prioridad;
@@ -61,6 +65,7 @@ export default class Tarea {
 
     marcarComoCompletada(): void {
         this.estado = Estado.COMPLETADA;
+        this.fechaCompletado = new Date();
     }
 
     public static fromJSON(json: string): Tarea {
