@@ -37,7 +37,7 @@ export default class TareaArchivo {
 
 	public async eliminarTarea(id: number): Promise<void> {
 		let tarea: Tarea = await this.cargarTarea(id);
-		tarea.activo = false;
+		tarea.setActivo(false);
 		this.guardarTarea(tarea);
 		return;
 	}
