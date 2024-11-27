@@ -1,6 +1,5 @@
 import Categoria from "./categoria";
-import { Estado } from "../enums/Estado";
-import { Prioridad } from "../enums/Prioridad";
+import { Estado, Prioridad } from "../enums";
 
 /**
  * Representa una tarea dentro de la aplicación.
@@ -73,24 +72,25 @@ export default class Tarea {
 		return this.estado;
 	}
 
-	public getEtiquetas(): string[] {
-		return this.etiquetas;
-	}
-	/**
-	 * Verifica si la tarea está activa.
-	 * @returns Verdadero si la tarea está activa, falso si no lo está.
-	*/
+    public getEtiquetas(): string[] {
+        return this.etiquetas;
+		}
 
-	public getActivo(): boolean {
-		return this.activo;
-	}
-	/**
-	 * Establece el estado activo de la tarea.
-	 * @param activo - Nuevo estado activo.
-	 */
-	public setActivo(activo: boolean): void {
-		this.activo = activo;
-	}
+    /**
+     * Verifica si la tarea está activa.
+     * @returns Verdadero si la tarea está activa, falso si no lo está.
+     */
+    public getActivo(): boolean {
+        return this.activo;
+    }
+
+    /**
+     * Establece el estado activo de la tarea.
+     * @param activo - Nuevo estado activo.
+     */
+    public setActivo(activo: boolean): void {
+        this.activo = activo;
+    }
 
 	/**
 	 * Obtiene el porcentaje de avance de la tarea.
@@ -143,5 +143,3 @@ export default class Tarea {
 		return tarea;
 	}
 }
-
-export { Tarea, Prioridad, Estado, Categoria };

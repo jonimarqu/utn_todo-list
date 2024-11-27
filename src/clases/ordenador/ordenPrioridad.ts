@@ -1,5 +1,5 @@
 import Ordenador from "./ordenador";
-import Tarea from "./tarea";
+import Tarea from "../tarea";
 
 export default class OrdenPrioridad implements Ordenador {
   constructor() {}
