@@ -1,5 +1,5 @@
 import Tarea from "./tarea";
-import { Estado } from "../enums/Estado";
+import { Estado } from "../enums";
 
 export default class Estadisticas {
   constructor() {}

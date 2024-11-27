@@ -1,4 +1,5 @@
-import { Categoria, Tarea } from '../src/clases/tarea';
+import Tarea from '../src/clases/tarea';
+import Categoria from '../src/clases/categoria';
 import TareaArchivo from '../src/clases/tareaArchivo';
 import { mock } from 'jest-mock-extended';
 
@@ -6,7 +7,7 @@ describe('Test de tareaArchivo', () => {
 	let instance: TareaArchivo;
 
 	beforeEach(() => {
-		instance = new TareaArchivo('./BD/');
+		instance = new TareaArchivo('../DB/');
 	});
 
 	it('should test constructor', () => {

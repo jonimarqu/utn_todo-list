@@ -1,4 +1,4 @@
-import OrdenPrioridad from "../src/clases/ordenPrioridad";
+import { OrdenPrioridad } from "../src/clases/ordenador";
 import Tarea from "../src/clases/tarea";
 import { mock } from "jest-mock-extended";
 

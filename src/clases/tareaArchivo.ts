@@ -1,6 +1,8 @@
 import { CustomFileClass } from 'stdio';
 import path from 'path';
-import { Tarea } from './tarea';
+import Tarea from './tarea';
+import fs from 'fs';
+
 /**
  * Clase que maneja el archivo de las Tareas y su acceso.
  */
@@ -8,11 +10,15 @@ export default class TareaArchivo {
 	private file: CustomFileClass = new CustomFileClass();
 	private archivo: Map<number, Tarea> = new Map();
 
-	constructor(private carpeta: string) { }
+	constructor(private carpeta: string) {
+		if (!fs.existsSync(carpeta)) {
+			fs.mkdirSync(carpeta);
+		}
+	}
 
 	/**
 	 * Actualiza el archivo con la tarea pasada por parámetro.
-	 * 
+	 *
 	 * @param tarea Tarea a actualizar en el archivo
 	 */
 	private actualizarArchivo(tarea: Tarea): void {
@@ -21,7 +27,7 @@ export default class TareaArchivo {
 
 	/**
 	 * Guarda la tarea pasada por parámetro en el archivo.
-	 * 
+	 *
 	 * @param tarea Tarea a guardar en el archivo
 	 */
 	public guardarTarea(tarea: Tarea): void {
@@ -33,7 +39,7 @@ export default class TareaArchivo {
 
 	/**
 	 * Carga la Tarea requerida desde el directorio.
-	 * 
+	 *
 	 * @param id id de la Tarea a cargar
 	 * @returns Tarea cargada desde el directorio
 	 */
@@ -51,7 +57,7 @@ export default class TareaArchivo {
 
 	/**
 	 * Carga las tareas desde el archivo.
-	 * 
+	 *
 	 * @returns Mapa con todas las tareas
 	 */
 	public cargarTareas(): Map<number, Tarea> {
@@ -60,7 +66,7 @@ export default class TareaArchivo {
 
 	/**
 	 * Aplica borrado lógico a una Tarea.
-	 * 
+	 *
 	 * @param id id de la Tarea a eliminar
 	 */
 	public async eliminarTarea(id: number): Promise<void> {

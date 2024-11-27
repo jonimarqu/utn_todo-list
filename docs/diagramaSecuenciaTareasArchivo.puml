@@ -1,25 +1,25 @@
-@startuml TareasArchivo
+@startuml TareaArchivo
 
 actor Usuario
-participant "TareasArchivo" as TareasArchivo
+participant "TareaArchivo" as TareaArchivo
 participant "CustomFileClass" as File
 participant "Tarea" as Tarea
 
-Usuario -> TareasArchivo : guardarTarea(tarea)
-activate TareasArchivo
-TareasArchivo -> File : abrir archivo
-File --> TareasArchivo : Archivo abierto
-TareasArchivo -> File : escribir a archivo
-File --> TareasArchivo : Datos escritos
-TareasArchivo -> File : close()
-File --> TareasArchivo : Archivo cerrado
-deactivate TareasArchivo
+Usuario -> TareaArchivo : guardarTarea(tarea)
+activate TareaArchivo
+TareaArchivo -> File : abrir archivo
+File --> TareaArchivo : Archivo abierto
+TareaArchivo -> File : escribir a archivo
+File --> TareaArchivo : Datos escritos
+TareaArchivo -> File : close()
+File --> TareaArchivo : Archivo cerrado
+deactivate TareaArchivo
 
-Usuario -> TareasArchivo : eliminarTarea(id)
-activate TareasArchivo
-TareasArchivo -> TareasArchivo : cargarTarea(id)
-TareasArchivo -> Tarea : Modificar tarea
-TareasArchivo -> TareasArchivo : guardarTarea(tarea)
-deactivate TareasArchivo
+Usuario -> TareaArchivo : eliminarTarea(id)
+activate TareaArchivo
+TareaArchivo -> TareaArchivo : cargarTarea(id)
+TareaArchivo -> Tarea : Modificar tarea
+TareaArchivo -> TareaArchivo : guardarTarea(tarea)
+deactivate TareaArchivo
 
 @enduml

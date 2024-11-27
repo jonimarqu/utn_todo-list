@@ -1,8 +1,8 @@
 import Tarea from "../src/clases/tarea";
-import { Estado } from "../src/enums/Estado";
-import { Prioridad } from "../src/enums/Prioridad";
+import { Estado, Prioridad } from "../src/enums";
 import Categoria from "../src/clases/categoria";
 import { mock } from "jest-mock-extended";
+
 describe("Testeo la clase Tarea", () => {
   let tarea: Tarea;
   const categoriaMock = mock<Categoria>();

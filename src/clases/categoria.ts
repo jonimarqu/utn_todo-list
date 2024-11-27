@@ -16,6 +16,3 @@ export default class Categoria {
         this.nombre = nombre;
     }
 }
-
-
-

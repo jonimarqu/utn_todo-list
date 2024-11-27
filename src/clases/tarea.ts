@@ -1,6 +1,5 @@
 import Categoria from "./categoria";
-import { Estado } from "../enums/Estado";
-import { Prioridad } from "../enums/Prioridad";
+import { Estado, Prioridad } from "../enums";
 
 /**
  * Representa una tarea dentro de la aplicación.
@@ -76,12 +75,6 @@ export default class Tarea {
     public getEtiquetas(): string[] {
         return this.etiquetas;
 		}
-	public getActivo(): boolean {
-		return this.activo;
-	}
-	public setActivo(activo: boolean): void {
-		this.activo = activo;
-	}
 
     /**
      * Verifica si la tarea está activa.
@@ -127,28 +120,26 @@ export default class Tarea {
         this.fechaCompletado = new Date();
     }
 
-    /**
-     * Crea una instancia de Tarea a partir de un JSON.
-     * @param json - Una cadena JSON que representa la tarea.
-     * @returns Una nueva instancia de Tarea.
-     */
-    public static fromJSON(json: string): Tarea {
-        const data = JSON.parse(json);
-        const tarea: Tarea = new Tarea(
-            data.id,
-            data.titulo,
-            data.descripcion,
-            new Date(data.fechaCreacion),
-            new Date(data.fechaVencimiento),
-            data.prioridad,
-            new Categoria(data.categoria.id, data.categoria.nombre)
-        );
-        tarea.avance = data.avance;
-        tarea.estado = data.estado;
-        tarea.etiquetas = data.etiquetas;
-        tarea.activo = data.activo;
-        return tarea;
-    }
+	/**
+	 * Crea una instancia de Tarea a partir de un JSON.
+	 * @param json - Una cadena JSON que representa la tarea.
+	 * @returns Una nueva instancia de Tarea.
+	 */
+	public static fromJSON(json: string): Tarea {
+		const data = JSON.parse(json);
+		const tarea: Tarea = new Tarea(
+			data.id,
+			data.titulo,
+			data.descripcion,
+			new Date(data.fechaCreacion),
+			new Date(data.fechaVencimiento),
+			data.prioridad,
+			new Categoria(data.categoria.id, data.categoria.nombre)
+		);
+		tarea.avance = data.avance;
+		tarea.estado = data.estado;
+		tarea.etiquetas = data.etiquetas;
+		tarea.activo = data.activo;
+		return tarea;
+	}
 }
-
-export { Tarea, Prioridad, Estado, Categoria };
