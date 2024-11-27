@@ -7,70 +7,56 @@ class App {
 	-estrategiaOrden: Ordenador
 
 	+getInstance(): App
-	+ejecutarComando(cmd: Command): void
 	+ordenar(): void
 }
 
-interface Command {
-	+execute(): void
-}
-
-class AgregarTareaCommand {
-	-tarea: Tarea
-	-tareasArchivo: TareasArchivo
-	+execute(): void
-}
-
-class EditarTareaCommand {
-	-tareaId: number
-	-nuevosDatos: Tarea
-	-tareasArchivo: TareasArchivo
-	+execute(): void
-}
-
-class EliminarTareaCommand {
-	-tareaId: number
-	-tareasArchivo: TareasArchivo
-	+execute(): void
-}
-
 class Tarea {
-	+id: number
-	+titulo: String
-	+descripcion: String
-	+fechaCreacion: Date
-	+fechaVencimiento: Date
-	+prioridad: Prioridad
-	+categoria: Categoria
-	+etiquetas: List<String>
-	+avance: number
-	+estado: Estado
+	-id: number
+	-titulo: String
+	-descripcion: String
+	-fechaCreacion: Date
+	-fechaVencimiento: Date
+	-fechaCreacion: Date
+	-prioridad: Prioridad
+	-categoria: Categoria;
+	-etiquetas: List<String>
+	-avance: number
+	-estado: Estado
 
 	+actualizarAvance(nuevoAvance: number): void
 	+marcarComoCompletada(): void
 }
 
 enum Prioridad {
-	ALTA
-	MEDIA
-	BAJA
-}
+		ALTA
+		MEDIA
+		BAJA
+	}
 
-enum Estado {
-	PENDIENTE
-	COMPLETADA
-}
+	enum Estado {
+		PENDIENTE
+		COMPLETADA
+	}
+	class Categoria{
+		-id:number;
+		-nombre:string;
+	}
+	class Estadisticas {
+		+calcularTareasCompletadas(listaTareas): number
+		+calcularTareasPendientes(listaTareas): number
+		+calcularTasaFinalizacion(listaTareas): number
+		+tiempoDedicadoPorTarea(listaTareas): Map<id, diasDedicado>
+	}
 
-class Categoria {
-	+id: number
-	+nombre: String
-}
+	class TareasArchivo {
+		+guardarTareas(tareas: List<Tarea>): void
+		+cargarTareas(): List<Tarea>
+	}
 
-class Estadisticas {
-	+calcularTareasCompletadas(): number
-	+calcularTareasPendientes(): number
-	+tiempoDedicadoPorTarea(): Map<Tarea, number>
-}
+	'uso
+	App --> Estadisticas
+	App --> TareasArchivo
+	TareasArchivo --> Tarea
 
 class TareasArchivo {
 	+guardarTarea(tarea: Tarea): void
@@ -92,23 +78,15 @@ class OrdenTitulo{
 class OrdenVencimiento{
 }
 
-'uso
-App --> Estadisticas
-App --> TareasArchivo
-App --> Command
-TareasArchivo --> Tarea
+	'composition
+	App *-- App
+	Tarea *-- Categoria
+	App *-- Ordenador
 
 'herencia
-Command <|.. AgregarTareaCommand
-Command <|.. EditarTareaCommand
-Command <|.. EliminarTareaCommand
-
 Ordenador <|.. OrdenPrioridad
 Ordenador <|.. OrdenTitulo
 Ordenador <|.. OrdenVencimiento
 
-'composition
-App *-- App
-Tarea *-- Categoria
 
 @enduml
