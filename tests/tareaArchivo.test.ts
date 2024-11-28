@@ -34,6 +34,42 @@ describe('Test de tareaArchivo', () => {
 		expect(await instance.cargarTarea(tarea1.getId())).toEqual(tarea1);
 	});
 
+	test("Pruebo que el metodo cargarTareas devuelva el valor de this.archivo correctamente", () => {
+		instance.guardarTarea(tarea1)
+		const tarea2 = new Tarea(
+			2,
+			"test",
+			"test",
+			new Date(1/1/2000),
+			new Date(1/1/2000),
+			1,
+			new Categoria(1, "test")
+		  );
+		instance.guardarTarea(tarea2)
+		const mapEsperado = new Map()
+		mapEsperado.set(1,tarea1)
+		mapEsperado.set(2,tarea2)
+		expect(instance.cargarTareas()).toEqual(mapEsperado)
+	})
+
+	test("Pruebo que el metodo cargarArrayTareas devuelva el valor de this.archivo como un Array", () => {
+		instance.guardarTarea(tarea1);
+		const tarea2 = new Tarea(
+		  2,
+		  "test",
+		  "test",
+		  new Date(1 / 1 / 2000),
+		  new Date(1 / 1 / 2000),
+		  1,
+		  new Categoria(1, "test")
+		);
+		instance.guardarTarea(tarea2);
+		const arrayEsperado = new Array<Tarea>();
+		arrayEsperado.push(tarea1);
+		arrayEsperado.push(tarea2);
+		expect(instance.cargarArrayTareas()).toEqual(arrayEsperado);
+	  });
+
 	it('should test eliminarTarea', async () => {
 		const tareaElim = new Tarea(
 			1,
