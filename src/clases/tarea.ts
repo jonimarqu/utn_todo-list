@@ -1,5 +1,6 @@
 import Categoria from "./categoria";
 import { Estado, Prioridad } from "../enums";
+import ErrorAvanceInvalido from "./errors/errorAvanceInvalido";
 
 /**
  * Representa una tarea dentro de la aplicación.
@@ -108,7 +109,7 @@ export default class Tarea {
 		if ([0, 25, 50, 75, 100].includes(nuevoAvance)) {
 			this.avance = nuevoAvance;
 		} else {
-			throw new Error("Avance inválido. Los valores permitidos son 0, 25, 50, 75, 100.");
+			throw new ErrorAvanceInvalido();
 		}
 	}
 
