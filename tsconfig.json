@@ -4,7 +4,7 @@
     "module": "commonjs",
     "sourceMap": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./",
     "removeComments": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
@@ -19,8 +19,8 @@
     ]
   },
   "include": [
-    "src/**/*"
-, "tests"  ],
+    "src/**/*",
+	],
   "exclude": [
     "dist",
     "node_modules",

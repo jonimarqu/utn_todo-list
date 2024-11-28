@@ -1,6 +1,5 @@
 import App from "../src/clases/app";
-import OrdenTitulo from "../src/clases/ordenTitulo";
-import OrdenPrioridad from "../src/clases/ordenPrioridad";
+import {OrdenTitulo,OrdenPrioridad} from "../src/clases/ordenador";
 import { mock } from "jest-mock-extended";
 import Tarea from "../src/clases/tarea";
 
@@ -8,7 +7,7 @@ describe("Test de la clase App", () => {
   let instance: App;
 
   beforeEach(() => {
-    instance = App.getInstance();
+    instance = App.getInstance("DB");
   });
 
   test("Pruebo que obtuve una instancia de App", () => {
@@ -17,7 +16,7 @@ describe("Test de la clase App", () => {
 
   test("Pruebo que solo se pueda crear una sola instancia de App", () => {
     const instance1 = instance;
-    const instance2 = App.getInstance();
+    const instance2 = App.getInstance("DB");
     expect(instance1).toEqual(instance2);
   });
 
