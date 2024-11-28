@@ -108,7 +108,7 @@ export default class Tarea {
 		if ([0, 25, 50, 75, 100].includes(nuevoAvance)) {
 			this.avance = nuevoAvance;
 		} else {
-			console.error("Avance inválido. Los valores permitidos son 0, 25, 50, 75, 100.");
+			throw new Error("Avance inválido. Los valores permitidos son 0, 25, 50, 75, 100.");
 		}
 	}
 
