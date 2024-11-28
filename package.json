@@ -12,7 +12,7 @@
     "dev-mode": "ts-node ./src/index.ts",
     "lint": "npx eslint ./src",
     "start": "node ./dist/index.js",
-    "start:dev": "tsc -w & nodemon main",
+    "start:dev": "tsc && node ./dist/index.js",
     "test": "npx jest tests --runInBand --detectOpenHandles",
     "prebuild": "npm run clean",
     "lint-fix": "npx eslint ./src --fix"
@@ -23,7 +23,6 @@
     "jest-compact-reporter": "^1.2.9",
     "jest-junit": "^16.0.0",
     "jest-mock-extended": "^4.0.0-beta1",
-    "nodemon": "^3.1.4",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
