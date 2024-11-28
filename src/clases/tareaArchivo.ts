@@ -65,6 +65,17 @@ export default class TareaArchivo {
 	}
 
 	/**
+	 * Carga las tareas desde el archivo en formato de Array.
+	 *
+	 * @returns Array con todas las tareas
+	 */
+	public cargarArrayTareas(): Array<Tarea> {
+		let resultado = new Array<Tarea>
+		resultado = [...this.archivo.values()]
+		return resultado;
+	}
+
+	/**
 	 * Aplica borrado lógico a una Tarea.
 	 *
 	 * @param id id de la Tarea a eliminar
