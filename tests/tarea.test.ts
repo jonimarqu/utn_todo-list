@@ -2,6 +2,7 @@ import Tarea from "../src/clases/tarea";
 import { Estado, Prioridad } from "../src/enums";
 import Categoria from "../src/clases/categoria";
 import { mock } from "jest-mock-extended";
+import ErrorAvanceInvalido from "../src/clases/errors/errorAvanceInvalido";
 
 describe("Testeo la clase Tarea", () => {
   let tarea: Tarea;
@@ -85,9 +86,10 @@ describe("Testeo la clase Tarea", () => {
   it("Deberia actualizar avance con valores validos", () => {
     tarea.actualizarAvance(25);
     expect(tarea["avance"]).toBe(25);
+  });
 
-    tarea.actualizarAvance(40); // No es un valor permitido
-    expect(tarea["avance"]).toBe(25); // Debe seguir en 25
+  it("Deberia hacer throw ya que es un valor invalido de avance", () => {
+    expect(() => tarea.actualizarAvance(40)).toThrow(new ErrorAvanceInvalido());
   });
 
   it("deberia marcar como completada cuando llamas a marcarComoCompletada", () => {
